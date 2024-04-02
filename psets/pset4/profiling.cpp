@@ -1,3 +1,6 @@
+// On my honour, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+// 서명: 이한결 (HanGyeol Lee)학번: 22100594
+//-------------------------------------------------------
 // Topic: Performance Analysis - profiling
 //
 // Description:	This program profiles the complexity of sorting algorithms.
@@ -118,46 +121,22 @@ int main(int argc, char *argv[]) {
 
 	///////////// rewrite this part for DRY and MNN ////////////////////////
 
-	cout << "\n\tinsertionsort(): sorted" << endl;
-	for (int i = 0; i < N; i++) list[i] = i;   			// sorted data ready
-	profiling(insertionsort, list, N, ::less);  		
+	string sortArr[] = {"insertionsort()", "mergesort()", "quicksort()"};
+	string selctionArr[] = {"sorted", "randomized", "reversed"};
+	void (*funcArray[])(int*, int, bool (*)(int, int)) = { insertionsort, mergesort, quicksort };
 
-	cout << "\n\tinsertionsort(): randomized" << endl;
-	randomize(list, N);
-	profiling(insertionsort, list, N, ::less);         	// randomized 
-
-	cout << "\n\tinsertionsort(): reversed" << endl;
-	int j = N - 1;
-	for (int i = 0; i < N; i++) list[i] = j--;			// reversed sequence
-	profiling(insertionsort, list, N, ::less);   		
-
-
-	cout << "\n\tmergesort(): sorted" << endl;
-	for (int i = 0; i < N; i++) list[i] = i;   			// sorted data ready
-	profiling(mergesort, list, N, ::less);  		
-
-	cout << "\n\tmergesort(): randomized" << endl;
-	randomize(list, N);
-	profiling(mergesort, list, N, ::less);         		// randomized
-
-	cout << "\n\tmergesort(): reversed" << endl;
-	j = N - 1;
-	for (int i = 0; i < N; i++) list[i] = j--;			// reversed sequence
-	profiling(mergesort, list, N, ::less);   	
-
-	cout << "\n\tquicksort(): sorted" << endl;
-	for (int i = 0; i < N; i++) list[i] = i;   			// sorted data ready
-	profiling(quicksort, list, N, ::less);              
-
-	cout << "\n\tquicksort(): randomized" << endl;
-	randomize(list, N);
-	profiling(quicksort, list, N, ::less);              // randomized 
-
-	cout << "\n\tquicksort(): reversed" << endl;
-	j = N - 1;
-	for (int i = 0; i < N; i++) list[i] = j--;			// reversed sequence
-	profiling(quicksort, list, N, ::less);   
-
+	for (int i = 0; i < 3; i++){
+		for (int j = 0 ; j < 3; j++){
+			cout << "\n\t" << sortArr[i] << " : " << selctionArr[j] << endl;
+			if (j == 0) for (int i = 0; i < N; i++) list[i] = i; 
+			else if (j == 1) randomize(list, N);
+			else {
+				int j = N - 1;
+				for (int i = 0; i < N; i++) list[i] = j--;
+			}
+			profiling(funcArray[i], list, N, ::less);   
+		}
+	}
 	///////////// rewrite this part for DRY and MNN ////////////////////////
 
 	delete [] list;

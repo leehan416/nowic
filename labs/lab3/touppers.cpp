@@ -1,39 +1,28 @@
-// 
-// Topic: Using a reference varaible
-// 
-// The C/C++ language do offer a function, `toupper()` to convert a character
-// to an uppercase, but not for a word or a string. Write a function called 
-// `touppers()` that converts a string to all uppercases in place where it 
-// does not require extra memory. 
-//  - Use a skeleton file, `touppers.cpp`, provided. 
-//  - Use a reference variable and `toupper()`, but not functions in <algorithm>.
-// 
-// author: idebtor@gmail.com
-// 
-// Sample Run:
-//  > g++ touppers.cpp -o touppers
-//  > ./touppers
-//  > Enter words: Hello Mr. Kim
-//  > HELLO MR. KIM
-//
-#include <iostream>
-
-//////////////////////////////////////////////////////////////////////////////
-// Define void touppers() that converts an input arguments into all uppercases
-// Use C++ reference and a for loop.
+// Step_6
+// On my honor, I pledge that I have neither received nor provided improper assistance in the completion of this assignment. Signed: 이한결(HanGyeol_Lee) Student Number: 22100594
 
 
+#include<iostream>
+#include <cctype> // to use toupper
 
-///////////////////// your code above ////////////////////////////////////////
+using namespace std;
+
 int main() {
-    std::string str;
-    std::cout << "Enter words: ";
-    std::getline(std::cin, str);
+    size_t i; // index of string
+    string input; // user input
+    
+    cout << "Enter words: ";
 
-    std::cout << "uncomment the following line and implement touppers() \n";
-    // touppers(str);
+    //input data
+    getline(cin, input);
 
-    std::cout << str << std::endl;
+    // change to upper case
+    for (i = 0; i < input.length(); i++) {
+        input[i] = (char) toupper(input[i]);
+    }
+    
+    // print
+    cout << input << endl;
+
     return 0;
 }
-

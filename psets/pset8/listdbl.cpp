@@ -68,7 +68,7 @@ pNode half(pList p) {
 
 // returns the first node with val found, the tail sentinel node 
 // returned by end(p) if not found. O(n)
-#if 1  // for-loop version 
+#if 0  // for-loop version 
 pNode find(pList p, int val) {
 	DPRINT(cout << ">find val=" << val << endl;);
 
@@ -86,8 +86,14 @@ pNode find(pList p, int val) {
 	DPRINT(cout << ">find val=" << val << endl;);
 	
 	pNode curr = begin(p);
-	cout << "your code here: Use while(), but not if"\n;
-
+	// cout << "your code here: Use while(), but not if"\n;
+	//-----------------------------------------------------
+	while (curr != end(p)) {
+		while(curr->data == val) return curr;
+		curr = curr->next;
+	}
+	DPRINT(cout << "<find - not found\n";);
+	//-----------------------------------------------------
 	return curr;
 }
 #endif
@@ -272,7 +278,20 @@ void push_back(pList p, int val) {
 // if x is not found, it does not push it. 
 void push(pList p, int val, int x) {
 	DPRINT(cout << ">push val=" << val << endl;);
-	cout << "your code here: use find()\n";
+	// cout << "your code here: use find()\n";
+	//-----------------------------------------------------
+	
+	pNode curr = find(p, x);
+
+	if (curr->data == val ) { // data found
+		pNode newNode = new Node{ val, curr->prev, curr};
+		insert(newNode, val);
+	} else { // if data is different -> didnt found on list
+		
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//-----------------------------------------------------
+
 	DPRINT(cout << "<push\n";);
 }
 
@@ -362,8 +381,14 @@ bool more(int x, int y) { return x > y; }   // for descending order
 pNode less(pList p, int z) {
 	pNode x = begin(p);
 
-	cout << "your code here\n";
-
+	// cout << "your code here\n";
+	//-----------------------------------------------------
+	while (x != end(p)) {
+		while(x->data < val) return x;
+		curr = x->next;
+	}
+	DPRINT(cout << "<more - not found\n";);
+	//-----------------------------------------------------
 	return x;
 }
 
@@ -373,8 +398,14 @@ pNode less(pList p, int z) {
 pNode more(pList p, int z) {
 	pNode x = begin(p);
 
-	cout << "your code here\n";
-	
+	// cout << "your code here\n";
+	//-----------------------------------------------------
+	while (x != end(p)) {
+		while(x->data > val) return x;
+		curr = x->next;
+	}
+	DPRINT(cout << "<more - not found\n";);
+	//-----------------------------------------------------
 	return x;
 }
 

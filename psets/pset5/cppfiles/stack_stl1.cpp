@@ -1,3 +1,5 @@
+// On my honour, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+// 서명: HanGyeol Lee (이한결) 학번: 22100594
 #include <iostream>
 #include <stack>
 
@@ -8,7 +10,6 @@ void printStack(stack<string> s);
 void printStack_fromBottoms(stack<string> s);
 
 int main() {
-//    int list[] = {1, 2, 3, 4, 5, 0, 6, 0, 0, 7, 0, 0, 0, 8};
     string list[] = {
             "to", "be", "or", "not", "to",
             "-", "be", "-", "-", "that", "-",
@@ -34,14 +35,6 @@ int main() {
     return 0;
 }
 
-//void printStack(stack<string> s) {
-//    while (!s.empty()) {
-//        cout << s.top() << ' ';
-//        s.pop();
-//    }
-//    // cout << endl // now s is empty
-//}
-
 void printStack(stack<string> s) {
     if (s.empty()) return;
     string temp;
@@ -53,19 +46,6 @@ void printStack(stack<string> s) {
 
     //recursion version
 }
-
-//void printStack_fromBottoms(stack<string> s) {
-//    stack<string> temp;
-//
-//    while (!s.empty()) {
-//        temp.push(s.top());
-//        s.pop();
-//    }
-//    while (!temp.empty()) {
-//        cout << temp.top() << ' ';
-//        temp.pop();
-//    }
-//}
 void printStack_fromBottoms(stack<string> s) {
     if (s.empty()) return;
     string temp;

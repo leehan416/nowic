@@ -1,8 +1,8 @@
+// On my honour, I pledge that I have neither received nor provided improper assistance in the completion of this assignment.
+// 서명: HanGyeol Lee (이한결) 학번: 22100594
 #include <iostream>
-// #include <stack>
 
 using namespace std;
-
 
 // 함수 reference 반환?
 
@@ -13,7 +13,6 @@ struct Stack {
 };
 
 using stack = Stack *;
-
 
 stack newStack(int capacity = 1) {
     stack s = new Stack;
@@ -32,7 +31,8 @@ int size(stack s) {
     return s->N;// code here
 }
 
-void push(stack s, string item) {
+//reference parameter
+void push(stack s, string &item) {
     s->item[s->N++] = item;
     //-----------------------------------------
     if (s->N == s->capacity) {
@@ -62,8 +62,8 @@ void pop(stack s) {
 
 bool empty(stack s) { return s->N == 0; }
 
-
-string top(stack s) { return s->item[s->N - 1]; }
+//reference func
+string &top(stack s) { return s->item[s->N - 1]; }
 
 
 void printStack(stack s) {
@@ -88,7 +88,6 @@ void printStack_fromBottom(stack s) {
 }
 
 int main() {
-    int list[] = {1, 2, 3, 4, 5, 0, 6, 0, 0, 7, 0, 0, 0, 8};
     string list[] = {
             "to", "be", "or", "not", "to",
             "-", "be", "-", "-", "that", "-",
@@ -96,6 +95,25 @@ int main() {
     };
 
     stack s = newStack();
+
+    //-----------------------------------------
+    // check for size and capacity
+    cout << "size : " << size(s) << " " << "capacity : " <<s->capacity << endl << endl;
+    //-----------------------------------------
+    
+    
+    for (auto item: list) { // to be not that or be
+        if (item != "-") push(s, item);
+        else {
+            cout << top(s) << ' ';
+            pop(s);
+        }
+    }
+
+    //-----------------------------------------
+    // check for size and capacity
+    cout << endl << endl << "size : " << size(s) << " " << "capacity : " <<s->capacity << endl;
+    //-----------------------------------------
 
     cout << "\nsize: " << size(s); // 2
     cout << "\ntop : " << top(s);  //is (8)

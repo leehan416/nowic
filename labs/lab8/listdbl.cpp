@@ -68,7 +68,7 @@ pNode half(pList p) {
 
 // returns the first node with val found, the tail sentinel node 
 // returned by end(p) if not found. O(n)
-#if 1  // for-loop version 
+#if 0  // for-loop version 
 pNode find(pList p, int val) {
 	DPRINT(cout << ">find val=" << val << endl;);
 
@@ -86,8 +86,15 @@ pNode find(pList p, int val) {
 	DPRINT(cout << ">find val=" << val << endl;);
 	
 	pNode curr = begin(p);
-	cout << "your code here: Use while(), but not if"\n;
+	// cout << "your code here: Use while(), but not if"\n;
+	//----------------------------------------------------------
 
+	while (curr != end(p))
+		while (curr->data == val) return curr;
+	
+	DPRINT(cout << "<find - not found\n";);
+	return curr; // tail
+	//----------------------------------------------------------
 	return curr;
 }
 #endif
